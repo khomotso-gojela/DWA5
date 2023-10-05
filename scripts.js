@@ -5,7 +5,7 @@ form.addEventListener("submit", (event) => {
   event.preventDefault();
   const entries = new FormData(event.target);
 
-  let { dividend, divider } = Object.fromEntries(entries);
+  const { dividend, divider } = Object.fromEntries(entries);
 
 	try {
 		if (!dividend || !divider) throw new Error('Division not performed. Both values are required in inputs. Try again');
@@ -15,7 +15,7 @@ form.addEventListener("submit", (event) => {
 		result.innerText = Math.floor(dividend / divider);
 
 	} catch (error) {
-		result.innerText = error
+		result.innerText = error.message
 	}
 
 	if (isNaN(parseFloat(dividend || 0)) || isNaN(parseFloat(divider || 0))) throw new Error('Something went wrong');
